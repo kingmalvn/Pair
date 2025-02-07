@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MALVIN-XD PAIR WEB</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("https://files.catbox.moe/ncxavs.jpg"); /* تصویر پس‌زمینه */
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; /* تصویر پس‌زمینه در تمام صفحه */
+    }
+    h1, input, button {
+      color: white; /* رنگ متن سفید */
+      margin: 10px 0;
+    }
+    input, button {
+      width: 90%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    input {
+      background: rgba(255, 255, 255, 0.7); /* رنگ پس‌زمینه شفاف برای فیلد ورودی */
+      color: #000;
+    }
+    button {
+      background: #00aaff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0088cc;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>MALVIN-XD - Fork Checker</h1>
+  <input type="text" id="username" placeholder="Enter GitHub Username">
+  <button onclick="checkFork()">Check Fork</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    async function checkFork() {
+      const username = document.getElementById('username').value;
+      const resultDiv = document.getElementById('result');
+
+      if (!username) {
+        resultDiv.textContent = "Please enter a username.";
+        resultDiv.style.color = "red";
+        return;
+      }
+
+      const owner = "kingmalvn"; // مالک مخزن
+      const repo = "MALVIN-XD";        // نام مخزن
+
+      try {
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/forks`);
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const forks = await response.json();
+        const isForked = forks.some(fork => fork.owner.login === username);
+
+        if (isForked) {
+          resultDiv.textContent = `Yes, ${username} has forked the repository. Wait...`;
+          resultDiv.style.color = "green";
+          setTimeout(() => {
+            window.location.href = "../qr"; // هدایت به ../pair
+          }, 2000); // زمان تأخیر 2 ثانیه
+        } else {
+          resultDiv.innerHTML = `No, ${username} has NOT forked the repository. Please <a href="https://github.com/${owner}/${repo}/fork" target="_blank">fork it here</a>.`;
+          resultDiv.style.color = "orange";
+        }
+      } catch (error) {
+        resultDiv.textContent = `An error occurred: ${error.message}`;
+        resultDiv.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

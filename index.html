@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="MALVIN-XD/Pair Code">
+    <meta property="og:description" content="Qr-code and Pair-code linker for MALVIN-XD bot.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ben-pair-web-deecb1e82d6e.herokuapp.com//">
+    <meta property="og:image" content="images/2nrSWv9.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MALVIN-XD QR/Pair Code">
+    <meta name="twitter:description" content="Qr-code and Pair-code linker for MALVIN-XD bot.">
+    <meta name="twitter:image" content="https://iili.io/2nrSWv9.jpg">
+    <title>MALVIN-XD PAIR WEB</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Gruppo&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+:root {
+  --color: #FAFAFA;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Graduate';
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 90vh;
+  background-image: url("https://files.catbox.moe/s1q8so.jpeg"); /* Set the background image */
+  
+}
+
+.container {
+  color: var(--color);
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: red;
+  margin-left: -120px;
+  font-size: 0.7rem;
+  padding: 5.9rem;
+}
+
+.right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  margin-right: -87px;
+  font-size: 0.7rem;
+  padding: 3.3rem;
+  opacity: 0.5;
+}
+
+.stack {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Graduate', Arial, sans-serif;
+  width: 100%;
+  z-index: 1;
+  flex-direction: column;
+}
+
+.stack span {
+  font-weight: bold;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  font-size: 2rem;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  margin-top: -10rem;
+  white-space: nowrap;
+}
+
+.stack span:nth-child(odd) { --glitch-translate: 8px; }
+.stack span:nth-child(even) { --glitch-translate: -8px; }
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+  };
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    transform: translate(var(--glitch-translate));
+  }
+  2% {
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  4%, 100% {  text-shadow: none; transform: none; }
+}
+button {
+  position: relative;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  font-family: 'Graduate', Arial, sans-serif;
+  padding: 1rem 3rem;
+  transition: 0.2s;
+}
+
+button:hover {
+  letter-spacing: 0.2rem;
+  padding: 1.1rem 3.1rem;
+  background: var(--clr);
+  color: var(--clr);
+  animation: box 3s infinite;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
+
+button i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+button i::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 80%;
+  top: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+
+button:hover i::before {
+  width: 15px;
+  left: 20%;
+  animation: move 3s infinite;
+}
+
+button i::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 20%;
+  bottom: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+
+button:hover i::after {
+  width: 15px;
+  left: 80%;
+  animation: move 3s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes box {
+  0% {
+    box-shadow: #27272c;
+  }
+  50% {
+    box-shadow: 0 0 25px var(--clr);
+  }
+  100% {
+    box-shadow: #27272c;
+  }
+}
+    
+.footer {
+  font-family: 'Gruppo', Arial, sans-serif;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: transparent;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 999;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+img {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 6rem;
+  margin-top: -6rem;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+}
+
+.image-container {
+  position: relative;
+  max-width: 150px;
+}
+
+footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #1A1A1A;
+      color: #bbb;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #1e90ff;
+      text-decoration: none;
+    }
+    
+img {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.loading-text {
+  color: white;
+  font-size: 1rem;
+  font-family: sans-serif;
+  justify-content: center;
+  animation: fade 1.5s infinite;
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+  </style>
+</head>
+
+<body>
+<div class="image-container">
+    
+    <div class="stack" style="--stacks: 3;">
+    <span style="--index: 0">MALVIN-XD</span>
+    <span style="--index: 1;">MALVIN-XD</span>
+    <span style="--index: 2;">MALVIN-XD</span>
+  </div>
+    <span class="left" id="lefttop">BEST</span>
+    <span class="right" id="hsgx">1.0.0</span>
+</div> 
+  <button style="--clr:#FF44CC" onclick="window.open('/checkk', '_blank');">
+    <span>QR Code</span><i></i>
+  </button>
+  
+  <button style="--clr:#0FF0FC" onclick="window.open('/check', '_blank');">
+    <span>Pair Code</span><i></i>
+  </button>
+
+    <button style="--clr:#ff2d2d" onclick="window.open('https://github.com/kingmalvn/MALVIN-XD/archive/refs/heads/main.zip', '_blank');">
+        <span>Get Bot Zip</span><i></i>
+    </button>
+    <button style="--clr:#39FF14" onclick="window.open('https://github.com/kingmalvn/MALVIN-XD, '_blank');">
+    <span>GitHub Repository</span><i></i>
+  </button>
+  <button style="--clr:#39FF14" onclick="window.open('', '_blank');">
+    <span>Whatsapp Channel</span><i></i>
+  </button>
+    <footer>
+    Made by <a href="https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z">Malvin King</a> © 2025 - <span id="currentYear">2025</span> All rights reserved.
+  </footer>
+<script>
+const element = document.getElementById("lefttop");
+const messages = ["Smart", "Perfect", "Fast", "Light", "Best"];
+let index = 0;
+setInterval(() => {
+  element.id = messages[index];
+  element.textContent = messages[index];
+  index = (index + 1) % messages.length;
+}, 1500);
+    fetch('https://raw.githubusercontent.com/PikaBotz/Anya_v2-MD/master/package.json')
+        .then(response => response.json())
+        .then(data => {
+            const version = data.version; 
+            document.getElementById('version').textContent = version; 
+        })
+        .catch(error => {
+            console.error('Error fetching version:', error);
+            document.getElementById('version').textContent = 'Version error'; 
+        });
+  window.addEventListener("load", () => {
+    const loadingScreen = document.getElementById("loading-screen");
+    loadingScreen.style.transition = "opacity 1s ease-in-out";
+    loadingScreen.style.opacity = 0;
+    setTimeout(() => loadingScreen.style.display = "none", 1000);
+  });
+</script>
+<div id="loading-screen" style="transition: opacity 1s ease-in-out 0s; opacity: 0;">
+  <div class="loading-text">Loading...</div>
+</div>
+
+
+</body></html>
